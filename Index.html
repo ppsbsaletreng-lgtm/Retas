@@ -1,12 +1,178 @@
-hallo wold
-website/
-├── index.php
-├── login.php
-├── logout.php
-├── admin.php
-├── tambah.php
-├── edit.php
-├── hapus.php
-├── koneksi.php
-├── database.sql
-└── style.css
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persatuan Kaos</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 13px 8px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+
+    th {
+      background: #f9fafb;
+    }
+
+    .lunas {
+      color: green;
+      font-weight: bold;
+    }
+
+    .belum {
+      color: red;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Persatuan Kaos</h1>
+  <p>Data Peserta & Pembayaran</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>🔎 Cari Peserta</h2>
+    <input
+      type="text"
+      id="search"
+      placeholder="Ketik nama peserta..."
+      onkeyup="cariPeserta()"
+    >
+  </div>
+
+  <div class="card">
+    <h2>📋 Daftar Peserta</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama</th>
+          <th>Pembayaran</th>
+        </tr>
+      </thead>
+
+      <tbody id="dataPeserta">
+
+        <tr>
+          <td>1</td>
+          <td>Contoh Peserta</td>
+          <td class="lunas">LUNAS</td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>Peserta Baru</td>
+          <td class="belum">BELUM BAYAR</td>
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td>Ahmad</td>
+          <td class="lunas">LUNAS</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Persatuan Kaos
+</footer>
+
+<script>
+function cariPeserta() {
+
+  let input = document
+    .getElementById("search")
+    .value
+    .toLowerCase();
+
+  let rows = document
+    .getElementById("dataPeserta")
+    .getElementsByTagName("tr");
+
+  for (let i = 0; i <.length; i++) {
+
+    let nama = rows[i]
+      .getElementsByTagName("td")[1]
+      .textContent
+      .toLowerCase();
+
+    if (nama.includes(input)) {
+      rows[i].style.display = "";
+    } else {
+      rows[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+</body>
+  </html>
